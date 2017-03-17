@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import Header from './Header';
+import Terminal from './Terminal';
 
 export default class App extends Component {
   render() {
     return (
-      <h2 id="heading">Hello ReactJS</h2>
+      <div className="App">
+        <Header />
+
+        <Terminal/>
+
+      </div>
     );
   }
 }
