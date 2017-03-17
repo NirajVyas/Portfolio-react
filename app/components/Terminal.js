@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import * as Commands from './Commands'
+
 class Terminal extends Component {
 
   constructor() {
@@ -72,25 +74,35 @@ class Terminal extends Component {
       let command = '';
       let output;
       let outputToReturn;
-    switch(string) {
-      case 'help':
-        outputToReturn = "If you are unsure on what the commands do you can add a question mark (?) at the end of the command for futher help. Here are the list of commands avilable<br />whoami contact clear ls cv "
-      break;
-      case 'ls':
-        outputToReturn = "whoami contact clear ls"
-      break;
-      case 'whoami':
-        outputToReturn = "Name: Niraj Vyas<br />Occupation: Web Developer<br />Technology stack: HTML, CSS, Javascript, Backbone.js, React.js<br />Build tools: Webpack, Brunch, Gulp<br />Version control: Git"
-      break;
-      case 'contact':
-        outputToReturn = "Feel free to contact me at nirajvyas20@gmail.com or via LinkedIn."
-      break;
-      case 'cv':
-        outputToReturn = "Click here to view and download my CV. A new tab will open."
-      break;
-      default:
-        outputToReturn = `command not found: ${string}`
-    }
+
+      console.log("window[string]: ",Commands[string])
+
+      outputToReturn = Commands[string] ? Commands[string]() 
+                      : `command not found: ${string}`
+
+  
+
+      // window[string];
+
+    // switch(string) {
+    //   case 'help':
+    //     outputToReturn = "If you are unsure on what the commands do you can add a question mark (?) at the end of the command for futher help. Here are the list of commands avilable<br />whoami contact clear ls cv "
+    //   break;
+    //   case 'ls':
+    //     outputToReturn = "whoami contact clear ls"
+    //   break;
+    //   case 'whoami':
+    //     outputToReturn = "Name: Niraj Vyas<br />Occupation: Web Developer<br />Technology stack: HTML, CSS, Javascript, Backbone.js, React.js<br />Build tools: Webpack, Brunch, Gulp<br />Version control: Git"
+    //   break;
+    //   case 'contact':
+    //     outputToReturn = "Feel free to contact me at nirajvyas20@gmail.com or via LinkedIn."
+    //   break;
+    //   case 'cv':
+    //     outputToReturn = "Click here to view and download my CV. A new tab will open."
+    //   break;
+    //   default:
+    //     outputToReturn = `command not found: ${string}`
+    // }
 
     output = ReactDOM.findDOMNode(this.refs.output);
     output.insertAdjacentHTML('beforeend', outputToReturn);
