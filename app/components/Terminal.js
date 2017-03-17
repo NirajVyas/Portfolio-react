@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
-
-import * as Commands from './Commands'
+import * as Commands from './Commands';
+import Utils from './Utils';
 
 class Terminal extends Component {
 
-  constructor() {
+  constructor(extensions) {
     super()
+
+    this.Utils = new Utils(extensions);
 
     this.keydownHandler = this.keydownHandler.bind(this);
     this.returnOnInput = this.returnOnInput.bind(this);
@@ -36,8 +38,6 @@ class Terminal extends Component {
       height: document.querySelector('.terminal-container').clientWidth
     })
     
-    console.log(document.querySelector('.terminal-container').clientHeight);
-
   }
 
   componentWillUnmount () {
@@ -61,48 +61,43 @@ class Terminal extends Component {
 
       this.returnOnInput(input.value)
 
-      // ReactDOM.findDOMNode(this.refs.command).value = '';
+      this.Utils.executeCommand(input.value)
 
     }
+
+    // up key
+    if (e.keyCode === 38) {
+
+      if (this.Utils.hasPrevCommand()) {
+           ReactDOM.findDOMNode(this.refs.command).value = this.Utils.getPrevCommand();
+      }
+
+    }
+
+    // down key
+    if (e.keyCode === 40) {
+
+      if (this.Utils.hasNextCommand()) {
+        ReactDOM.findDOMNode(this.refs.command).value = this.Utils.getNextCommand();
+      } else {
+        ReactDOM.findDOMNode(this.refs.command).value = '';
+      }
+
+    }
+
   }
 
   returnOnInput(string) {
   
-      const line = ReactDOM.findDOMNode(this.refs.inputLine).cloneNode(true);
-      const input = line.querySelector('input.cmdline');
+    const line = ReactDOM.findDOMNode(this.refs.inputLine).cloneNode(true);
+    const input = line.querySelector('input.cmdline');
 
-      let command = '';
-      let output;
-      let outputToReturn;
+    let command = '';
+    let output;
+    let outputToReturn;
 
-      console.log("window[string]: ",Commands[string])
-
-      outputToReturn = Commands[string] ? Commands[string]() 
-                      : `command not found: ${string}`
-
-  
-
-      // window[string];
-
-    // switch(string) {
-    //   case 'help':
-    //     outputToReturn = "If you are unsure on what the commands do you can add a question mark (?) at the end of the command for futher help. Here are the list of commands avilable<br />whoami contact clear ls cv "
-    //   break;
-    //   case 'ls':
-    //     outputToReturn = "whoami contact clear ls"
-    //   break;
-    //   case 'whoami':
-    //     outputToReturn = "Name: Niraj Vyas<br />Occupation: Web Developer<br />Technology stack: HTML, CSS, Javascript, Backbone.js, React.js<br />Build tools: Webpack, Brunch, Gulp<br />Version control: Git"
-    //   break;
-    //   case 'contact':
-    //     outputToReturn = "Feel free to contact me at nirajvyas20@gmail.com or via LinkedIn."
-    //   break;
-    //   case 'cv':
-    //     outputToReturn = "Click here to view and download my CV. A new tab will open."
-    //   break;
-    //   default:
-    //     outputToReturn = `command not found: ${string}`
-    // }
+    outputToReturn = Commands[string] ? Commands[string]() 
+                    : `command not found: ${string}`
 
     output = ReactDOM.findDOMNode(this.refs.output);
     output.insertAdjacentHTML('beforeend', outputToReturn);
@@ -111,7 +106,8 @@ class Terminal extends Component {
   }
 
   render() {
-    
+
+    console.log(this.refs)
     const time = new Date().toString();
 
     return (
