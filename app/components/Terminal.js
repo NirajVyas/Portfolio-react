@@ -61,7 +61,7 @@ class Terminal extends Component {
 
       this.returnOnInput(input.value)
 
-      this.Utils.executeCommand(input.value)
+      this.Utils.addCommandToHistory(input.value)
 
     }
 
@@ -107,17 +107,17 @@ class Terminal extends Component {
 
   render() {
 
-    console.log(this.refs)
-    const time = new Date().toString();
+    const time = this.Utils.getDate();
 
     return (
       <div className='terminal-container'>
         <div className='terminal-header'>            
-            <a href="#" className='prp close'></a>
-            <a href="#" className='prp min'></a>
-            <a href="#" className='prp max'></a>  <span className='terminal-span'>Niraj -- Bash - {this.state.width} x {this.state.height} </span></div>
+            <a href="#" className='terminalBtn close'></a>
+            <a href="#" className='terminalBtn min'></a>
+            <a href="#" className='terminalBtn max'></a>  <span className='terminal-span'>Niraj -- Bash - {this.state.width} x {this.state.height} </span>
+        </div>
         <div className='terminal-inner'>
-            <span>Last login: ${time} on ttys001</span>
+            <span>Last login: {time} on ttys001</span>
             <div>Type in `help` to get started</div>
 
           <output ref="output">
@@ -125,7 +125,11 @@ class Terminal extends Component {
 
           <div className='terminal-intro'>
             <div className="input-line line" ref="inputLine">
-              <div className="prompt">$</div>
+              <div className="prompt">
+                <span className="arrow">&#8594;</span> 
+                <span className="repo"> niraj-vyas</span> git:(
+                <span className="branch">development</span>) $
+              </div>
               <div>
                   <input className="cmdline" ref="command" autofocus/>
               </div>
