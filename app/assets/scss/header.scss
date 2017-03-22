@@ -23,56 +23,81 @@
 
     .header-inner {
         position: relative;
+        height: 100vh;
         h1 {
             margin: 0px;
             text-transform: uppercase;
             color: white;
-            font-size: 25px;
+            font-size: 20px;
             font-weight: bold;
             padding-top: 40px;
             padding-left: 40px;
         }
         h2 {
             margin: 0px;
-            font-size: 20px;
+            font-size: 18px;
             color: white;
             text-transform: uppercase;
             padding-left: 40px;
         }
 
-        ul {
-            list-style-type: none;
-            padding: 0px;
-            margin: 0px;
-            li {
-                display: block;
-                background-size: auto 97px;
-                background-repeat: no-repeat;
-                height: 200px;
-                width: auto;
-                text-align: center;
-                background-position: center;
-                &.terminal {
-                    background-image: url(../images/terminal-icon.png);
-                }
-                &.examples {
-                    background-image: url(../images/website-icon.png);
-                }
-                &.contact {
-                    background-image: url(../images/contact-icon.png);
-                }
-                &.cv {
-                    background-image: url(../images/cv-icon.png);
-                }
+        .logo-container {
+            margin-top: 100px;
+            .logo {
+                width: 88px;
+                border: 1px dashed white;
+                margin: 0 auto;
+                font-size: 72px;
+                letter-spacing: -12px;
+                color: red;
                 span {
-                    display: block;
-                    padding-top: 205px;
+                    color: white;
+                }
+            }
+        }
+
+        nav {
+            position: absolute;
+            left: 0;
+            bottom: 100px;
+            width: 100%;
+            text-align: center;
+            ul {
+                width: auto;
+                max-width: 410px;
+                margin: 0 auto;;
+                padding: 0px;
+                li {
+                    position: relative;
+                    display: inline-block;
+                    vertical-align: middle;
+                    padding: 10px 40px;
+                    text-align: center;
+                    margin-top: 30px;
+                    cursor: pointer;
+                    img {
+                        width: 60px;
+                        height: 60px;
+                    }
+                    span {
+                        display: block;
+                        color: white;
+                        font-family: "Helvetica Neue",Helvetica,sans-serif;
+                        text-transform: uppercase;
+                        font-size: 12px;
+                        opacity: 0.6;
+                        transition: all 0.5s;
+                    }
+                    &:hover {
+                        span {
+                            opacity: 1;
+                        }
+                    }
                 }
             }
         }
 
     }
-
 
 }
 
