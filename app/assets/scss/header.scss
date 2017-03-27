@@ -32,6 +32,10 @@
             font-weight: bold;
             padding-top: 40px;
             padding-left: 40px;
+            transition: all 0.5s;
+            &.active {
+                padding-top: 1px;
+            }
         }
         h2 {
             margin: 0px;
@@ -101,4 +105,16 @@
 
 }
 
+@media screen and (min-width: 640px) {
 
+    .header {
+        .header-inner {
+            nav {
+                ul {
+                    max-width: 580px;
+                }
+            }
+        }
+    }
+
+}

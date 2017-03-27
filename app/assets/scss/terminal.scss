@@ -1,3 +1,21 @@
+.terminal-overlay {
+    position: fixed;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    // display: none;
+    background: #fff;
+    backface-visibility: hidden;
+    z-index: 4;
+    transition: all 0.5s;
+    &.show {
+        display: block;
+        top: 1301px;
+        transform: translate(0px, -1251px) translateZ(0px);
+    }
+}
+
 .terminal-container {
     width: 80%;
     height: 300px;
@@ -5,7 +23,10 @@
     border: 1px solid black;
     font-family: 'Inconsolata', 'monospace';
     font-size: 13px;
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     .terminal-inner {
         margin: 5px;
     }

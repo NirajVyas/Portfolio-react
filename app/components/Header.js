@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 
 class Header extends Component {
+
+  constructor() {
+    super();
+
+    this.state = {
+      active: false
+    }
+
+    this.showOverlay = this.showOverlay.bind(this);
+  }
+
   render() {
     return (
       <div className="header overlay">
         <div className="header-inner">
-        <h1>Niraj Vyas</h1>
+        <h1 className={this.state.active ? 'active' : null}>Niraj Vyas</h1>
         <h2>Web Developer</h2>
 
         <div className="logo-container">
@@ -14,7 +25,7 @@ class Header extends Component {
 
         <nav>
           <ul>
-            <li className="terminal">
+            <li className="terminal" onClick={(e) =>this.showOverlay(e)}>
             <img src="http://placehold.it/350x150>" alt="Terminal icon"/>
               <span>Terminal</span>
             </li>
@@ -36,6 +47,15 @@ class Header extends Component {
         </div>
       </div>
     );
+  }
+
+  showOverlay(e) {
+
+    this.setState({
+      active: true
+    })
+
+     document.querySelector('.terminal-overlay').className = 'terminal-overlay show'
   }
 }
 
