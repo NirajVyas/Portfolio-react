@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import classNames from 'classnames';
+import HeaderIcons from './Header_Icons';
 
 class Header extends Component {
 
@@ -10,20 +12,39 @@ class Header extends Component {
     }
 
     this.showOverlay = this.showOverlay.bind(this);
+    this.disableActive = this.disableActive.bind(this);
   }
 
   render() {
     return (
-      <div className="header overlay">
+      <div className={
+        classNames(
+          'header overlay',
+          this.state.active ? 'active' : null
+        )
+      }>
         <div className="header-inner">
         <h1 className={this.state.active ? 'active' : null}>Niraj Vyas</h1>
         <h2>Web Developer</h2>
 
-        <div className="logo-container">
+        <HeaderIcons active={this.state.active} disableActive={this.disableActive}/>
+
+        <div className={
+          classNames(
+            'logo-container',
+            this.state.active ? 'active' : null
+          )
+        }>
+
           <div className="logo">N<span>V</span></div>
         </div>        
 
-        <nav>
+        <nav className={
+          classNames(
+            this.state.active ? 'active' : null
+          )
+        }>
+
           <ul>
             <li className="terminal" onClick={(e) =>this.showOverlay(e)}>
             <img src="http://placehold.it/350x150>" alt="Terminal icon"/>
@@ -57,6 +78,16 @@ class Header extends Component {
 
      document.querySelector('.terminal-overlay').className = 'terminal-overlay show'
   }
+
+  disableActive() {
+
+    if (document.querySelector('.active')) {
+      this.setState({active: false})
+    } else {
+      this.setState({active: true})
+    }
+  }
+
 }
 
 export default Header;

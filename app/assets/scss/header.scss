@@ -5,7 +5,8 @@
     position: relative;
     background-size: cover;
     background-position: center center;
-
+    transition: all 0.5s;
+    
     &.overlay {
         position: relative;
         &:before{
@@ -19,6 +20,10 @@
         opacity: 0.9;
         z-index:0;
         }
+    }
+
+    &.active {
+        background-image: none;
     }
 
     .header-inner {
