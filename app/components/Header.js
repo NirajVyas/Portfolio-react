@@ -46,11 +46,11 @@ class Header extends Component {
         }>
 
           <ul>
-            <li className="terminal" onClick={(e) =>this.showOverlay(e)}>
+            <li className="terminal" onClick={(e) =>this.showOverlay('terminal')}>
             <img src="http://placehold.it/350x150>" alt="Terminal icon"/>
               <span>Terminal</span>
             </li>
-            <li className="examples">
+            <li className="examples" onClick={(e) =>this.showOverlay('portfolio')}>
             <img src="http://placehold.it/350x150>" alt="Website icon"/>
               <span>Work</span>
             </li>
@@ -70,13 +70,14 @@ class Header extends Component {
     );
   }
 
-  showOverlay(e) {
+  showOverlay(view) {
 
     this.setState({
       active: true
     })
 
-     document.querySelector('.terminal-overlay').className = 'terminal-overlay show'
+
+     document.querySelector(`.${view}-overlay`).className = `${view}-overlay show`;
   }
 
   disableActive() {
