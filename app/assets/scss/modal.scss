@@ -1,0 +1,36 @@
+.modal-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.modal {
+  position: absolute;
+  width: 90%;
+  z-index: 0;
+  background-color: white;
+  box-shadow: 0 1px 8px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  height: auto;
+  top: 25px;
+  button {
+    background-image: url('../images/Cancel-100.png');
+    background-repeat: none;
+    text-indent: -9999px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+    background-size: 40px;
+    cursor: pointer;
+    right: 0px;
+    position: absolute;
+  }
+}
