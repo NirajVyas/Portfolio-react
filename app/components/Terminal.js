@@ -30,7 +30,7 @@ class Terminal extends Component {
     command.addEventListener('keydown', this.keydownHandler, false)
 
     window.addEventListener('click', () => {
-      command.focus()
+      // command.focus()
     }, false);
 
     this.setState({

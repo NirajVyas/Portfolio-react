@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './Header';
 import Terminal from './Terminal';
 import Portfolio from './Portfolio';
+import Contact from './Contact';
 
 export default class App extends Component {
   render() {
@@ -13,6 +14,7 @@ export default class App extends Component {
 
         <Portfolio />
 
+        <Contact />
       </div>
     );
   }

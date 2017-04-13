@@ -3,12 +3,13 @@
 @import "./headerIcons";
 @import "./portfolio";
 @import "./modal";
+@import "./contact";
 
 body {
     margin: 0px;
 }
 
-.terminal-overlay, .portfolio-overlay {
+.terminal-overlay, .portfolio-overlay , .contact-overlay {
     position: fixed;
     top: 105%;
     left: 0;

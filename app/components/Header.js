@@ -54,7 +54,7 @@ class Header extends Component {
             <img src="http://placehold.it/350x150>" alt="Website icon"/>
               <span>Work</span>
             </li>
-            <li className="contact">
+            <li className="contact" onClick={(e) =>this.showOverlay('contact')}>
             <img src="http://placehold.it/350x150>" alt="Contact icon"/>
               <span>Contact</span>
             </li>
