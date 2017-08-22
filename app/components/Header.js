@@ -50,6 +50,7 @@ class Header extends Component {
             <img src="http://placehold.it/350x150>" alt="Terminal icon"/>
               <span>Terminal</span>
             </li>
+            {/* 
             <li className="examples" onClick={(e) =>this.showOverlay('portfolio')}>
             <img src="http://placehold.it/350x150>" alt="Website icon"/>
               <span>Work</span>
@@ -62,6 +63,7 @@ class Header extends Component {
               <img src="http://placehold.it/350x150>" alt="CV icon"/>
               <span>CV</span>
             </li>
+             */}
           </ul>
         </nav>
 
@@ -75,7 +77,6 @@ class Header extends Component {
     this.setState({
       active: true
     })
-
 
      document.querySelector(`.${view}-overlay`).className = `${view}-overlay show`;
   }

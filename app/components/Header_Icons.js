@@ -23,9 +23,9 @@ class HeaderIcons extends Component {
       }>
         <ul>
           <li>Terminal</li>
-          <li>Work</li>
+          {/*<li>Work</li>
           <li>CV</li>
-          <li>Contact</li>
+          <li>Contact</li> */}
           <li onClick={this.closeOverlay}>Close</li>
         </ul>
       </div>

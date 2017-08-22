@@ -12,9 +12,6 @@ export default class App extends Component {
 
         <Terminal />
 
-        <Portfolio />
-
-        <Contact />
       </div>
     );
   }
